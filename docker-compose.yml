@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  qgis:
+    build:
+     context: dockerfiles
+     dockerfile: Dockerfile
+    image: mvilche/qgis:3-ubuntu-bionic
+    environment:
+     - TIMEZONE=America/Montevideo
+     - QGIS_DOMAIN=qgis.local
+     - QGIS_DEBUG=1
+     - QGIS_LOGLEVEL=0
+    volumes:
+      - qgis_data:/home/qgis
+    ports:
+     - "8082:8080"
+    networks:
+     - integracion
+
+networks:
+  integracion:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+         - subnet: 142.248.0.0/16
+
+volumes:
+  qgis_data:
