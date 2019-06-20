@@ -1,8 +1,9 @@
 FROM ubuntu:bionic
 RUN apt update && apt install gpg ca-certificates gpg-agent --no-install-recommends -y
 COPY qgis-2017.gpg.key /tmp/qgis-2017.gpg.key
-COPY qgis.list /etc/apt/sources.list.d/
-RUN gpg --import /tmp/qgis-2017.gpg.key && gpg --fingerprint CAEB3DC3BDF7FB45 && gpg --export --armor CAEB3DC3BDF7FB45 | apt-key add -
+RUN echo "deb  http://qgis.org/debian bionic main" >> /etc/apt/sources.list && \
+echo "deb-src  http://qgis.org/debian bionic main" >> /etc/apt/sources.list && \
+gpg --import /tmp/qgis-2017.gpg.key && gpg --fingerprint CAEB3DC3BDF7FB45 && gpg --export --armor CAEB3DC3BDF7FB45 | apt-key add -
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install apache2 xvfb qgis-server python-qgis python-fcgi libapache2-mod-fcgid -y --no-install-recommends
 RUN a2enmod rewrite && sed -i -e "s/^Listen 80/Listen 8080/" /etc/apache2/ports.conf && \
