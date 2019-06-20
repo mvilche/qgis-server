@@ -8,6 +8,7 @@ DIR='/home/qgis/.init'
 
 if [ ! -d $DIR ]; then  
 mkdir -p /home/qgis/.init /home/qgis/qgisserverdb /home/qgis/qgisserverdb /home/qgis/projects /home/qgis/runtime && \
+cp -rf /tmp/world/* /home/qgis/projects/ && \
 echo "##############################" && \
 echo "DIRECTORIOS INICIALIZADOS.." && \
 echo "##############################"
