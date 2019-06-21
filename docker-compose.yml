@@ -4,12 +4,14 @@ services:
     build:
      context: dockerfiles
      dockerfile: Dockerfile
-    image: mvilche/qgis:3-ubuntu-bionic
+    image: mvilche/qgis:ubuntu18.04
     environment:
      - TIMEZONE=America/Montevideo
      - QGIS_DOMAIN=qgis.local
      - QGIS_DEBUG=1
      - QGIS_LOGLEVEL=0
+     - APACHE_USER=qgis
+     - APACHE_PASS=qgis
     volumes:
       - qgis_data:/home/qgis
     ports:

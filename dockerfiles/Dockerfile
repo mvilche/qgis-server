@@ -8,7 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install apache2 xvfb qgis-server python-qgis python-fcgi libapache2-mod-fcgid -y --no-install-recommends
 RUN a2enmod rewrite && a2enmod headers && sed -i -e "s/^Listen 80/Listen 8080/" /etc/apache2/ports.conf && \
 sed -i -e "s/^Listen 443/Listen 8443/" /etc/apache2/ports.conf && \
-sed -ri -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g' /etc/apache2/apache2.conf && rm -rf /etc/apache2/sites-enabled/* /etc/apache2/sites-available/* /var/www/html/*
+sed -ri -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g' /etc/apache2/apache2.conf && \
+rm -rf /etc/apache2/sites-enabled/* /etc/apache2/sites-available/* /var/www/html/*
 COPY qgis.conf /etc/apache2/sites-enabled/qgis.conf
 COPY seguridad.conf /etc/apache2/conf-enabled/seguridad.conf
 COPY world /tmp/world

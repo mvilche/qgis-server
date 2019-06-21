@@ -7,9 +7,11 @@ QGIS 3.6 + UBUNTU BIONIC Docker image
 | Nombre | Descripción   |
 |---|---|
 | QGIS_DOMAIN  |  Dominio de acceso |
-| QGIS_DEBUG  | Activar o desactivar modo debug (Activado: 1 || Desactivado: 0)  |
-| QGIS_LOGLEVEL  | Nivel de log (Info: 0 || Warning: 1 || Critical: 2)  |
+| QGIS_DEBUG  | Activar o desactivar modo debug (Activado: 1, Desactivado: 0)  |
+| QGIS_LOGLEVEL  | Nivel de log (Info: 0, Warning: 1, Critical: 2)  |
 | TIMEZONE  | Timezon predeterminado (Ejemplo: America/Montevideo )  |
+| APACHE_USER  | autenticación básica user  |
+| APACHE_PASS  | autenticación básica password  |
 
 
 ## Iniciar servicios
@@ -27,7 +29,10 @@ docker-compose up
 Example map:
 
 
-http://$QGIS_DOMAIN:8082/cgi-bin/qgis_mapserv.fcgi?MAP=/home/qgis/projects/world3.qgs&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=-432786,4372992,3358959,7513746&SRS=EPSG:3857&WIDTH=665&HEIGHT=551&LAYERS=countries&FORMAT=image/jpeg
+http://$QGIS_DOMAIN:8082/wms?MAP=/home/qgis/projects/world3.qgs&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=-432786,4372992,3358959,7513746&SRS=EPSG:3857&WIDTH=665&HEIGHT=551&LAYERS=countries&FORMAT=image/jpeg
+
+user: $APACHE_USER
+password: $APACHE_PASS
 
 ```
 
