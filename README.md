@@ -7,11 +7,11 @@ QGIS 3.6 + UBUNTU BIONIC Docker image
 | Nombre | Descripción   |
 |---|---|
 | QGIS_DOMAIN  |  Dominio de acceso |
-| QGIS_DEBUG  | Activar o desactivar modo debug (Activado: 1 || Desactivado: 0)  |
-| QGIS_LOGLEVEL  | Nivel de log (Info: 0 || Warning: 1 || Critical: 2)  |
+| QGIS_DEBUG  | Activar o desactivar modo debug (Activado: 1, Desactivado: 0)  |
+| QGIS_LOGLEVEL  | Nivel de log (Info: 0, Warning: 1, Critical: 2)  |
 | TIMEZONE  | Timezon predeterminado (Ejemplo: America/Montevideo )  |
-| APACHE_USER  | autenticación básica user )  |
-| APACHE_PASS  | autenticación básica password )  |
+| APACHE_USER  | autenticación básica user  |
+| APACHE_PASS  | autenticación básica password  |
 
 
 ## Iniciar servicios
